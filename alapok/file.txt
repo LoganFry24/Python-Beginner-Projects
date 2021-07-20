@@ -1,0 +1,10 @@
+1;Franklin Goodman;56
+2;Dwight Hart;68
+3;Shelia Meyer;61
+4;Reginald White;34
+5;Sheldon Jenkins;33
+6;Francisco Nash;61
+7;Jan Cross;38
+8;Jesse Ferguson;65
+9;Bob Franklin;56
+10;Miriam Mccarthy;62
