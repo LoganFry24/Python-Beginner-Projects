@@ -6,15 +6,13 @@ class Screen:
         self.player1=player1
         self.size=size
     def Update(self,lepesek,turn):
+        width=len(self.level[0])
+        track= [[0 for x in range(width)]for y in range(len(self.level))]
         i=0
         while i!=len(self.level):
             x=0
-            while x!=len(self.level[i]):
-                if self.level[i][x]==str(lepesek[-1]):
-                    if turn==self.player1:
-                        self.level[i].replace(str(lepesek[-1]),"X")  
-                    else:
-                        self.level[i].replace(str(lepesek[-1]),"O")  
+            while x!= width:
+                track[i][x]=self.level[i][x]
                 x+=1
             i+=1
     def Render(self,turn,msg):

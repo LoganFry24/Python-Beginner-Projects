@@ -27,7 +27,7 @@ class Main:
             graph.Update(lepesek,turn)
             #Condition
             #Render
-            graph.Render(turn,msg)
+            #graph.Render(turn,msg)
             if turn == self.player1:
                 turn=self.player2
             else:

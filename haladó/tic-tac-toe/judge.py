@@ -2,8 +2,16 @@
 from levelgenerator import Levelgen
 l=Levelgen(20)
 level=l.Generate()
-for x in level:
-    print(x)
+width=len(level[0])
+track= [[0 for x in range(width)]for y in range(len(level))]
+i=0
+while i!=len(level):
+    x=0
+    while x!= len(level[i]):
+        track[i][x]=level[i][x]
+        x+=1
+    i+=1
+
 i=0
 while i!=len(level):
     x=0
@@ -17,10 +25,19 @@ while i!=len(level):
             if sor == "400":
                 print("megvan")
                 print(sor)
-                level[i][x]=' '
-                level[i][x+1]='X'
-                level[i][x+2]=' '
+                track[i][x]=' '
+                track[i][x+1]='X'
+                track[i][x+2]=' '
         x+=1
+    i+=1
+i=0
+while i!=len(level):
+    x=0
+    sor=""
+    while x!=len(track[i]):
+        sor="{}{}".format(sor,track[i][x])
+        x+=1
+    level[i]=sor
     i+=1
 for x in level:
     print(x)
