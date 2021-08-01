@@ -1,5 +1,5 @@
 #graphics of the game
-import os
+from system import System
 class Screen:
     def __init__(self,level,player1):
         self.level=level
@@ -33,7 +33,8 @@ class Screen:
             i+=1
         return self.level
     def Render(self,turn,msg):
-        os.system('cls')
+        sc=System()
+        del sc
         y=0
         while y != len(self.level):
             x=0

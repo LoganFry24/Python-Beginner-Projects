@@ -1,4 +1,4 @@
-import os
+from system import System
 class Levelgen:
     def __init__(self,size):
         self.size=size
@@ -7,7 +7,8 @@ class Levelgen:
         elif self.size > 20:
             raise Exception("Hiba! A pálya mérete túl nagy!")
     def Generate(self):
-        os.system('cls')
+        sc=System()
+        del sc
         width=self.size*4+1
         self.level=[['|' for x in range(width)]for y in range(self.size)]
         y=0
