@@ -1,6 +1,5 @@
 #gamemode class
 # here we can choose between pvp and pve
-import os
 from validate import Validate
 class Gamemode:
     def __init__(self,mode):

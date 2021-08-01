@@ -1,5 +1,5 @@
 #check the correction of the input
-import os
+from system import System
 class Validate:
     def __init__(self,msg):
         self.var=""
@@ -8,7 +8,8 @@ class Validate:
         msg=""
         correct =False
         while correct!=True:
-            os.system('cls')
+            sc=System()
+            del sc
             if self.msg=="Kérem a nehézségi szint számát!":
                 print("Választható nehézségi szintek:")
                 print("Könnyű: 1")
