@@ -13,22 +13,31 @@ class Main:
         elif mode=="M":
             self.player2=names[1]
     def Game(self):
-        control=Controls(self.mode)
-        graph=Screen(self.level,self.player1,self.size)
+        #variables
         loop=True
-        turn =self.player1
-        lepesek=[]
-        graph.Render(turn,"")
         msg=""
+        lepesek=[]
+        turn =self.player1
+        #constructors
+        control=Controls(self.mode)
+        graph=Screen(self.level,self.player1)
+        #the game loop
         while loop==True:
-            msg=control.Input(turn,self.size,lepesek)
-            #print("kép")
-            #Update
-            graph.Update(lepesek,turn)
-            #Condition
             #Render
-            #graph.Render(turn,msg)
-            if turn == self.player1:
-                turn=self.player2
-            else:
-                turn=self.player1
+            graph.Render(turn,msg)
+            # get the input from a player or a bot
+            msg=control.Input(turn,self.size,lepesek)
+            #Update the level
+            graph.Update(lepesek[-1],turn)
+            #Condition
+            if len(lepesek) == self.size**2:
+                msg ="Vége a játéknak! Nincs több hely"
+                graph.Render(turn,msg)
+                break
+            if msg=="":
+                if turn == self.player1:
+                    turn=self.player2
+                else:
+                    turn=self.player1
+            
+            

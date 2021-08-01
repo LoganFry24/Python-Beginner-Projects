@@ -1,24 +1,48 @@
 #graphics of the game
 import os
 class Screen:
-    def __init__(self,level,player1,size):
+    def __init__(self,level,player1):
         self.level=level
         self.player1=player1
-        self.size=size
+    def Convert(self,lepes):
+        if lepes <10:
+            lepes =" {} ".format(str(lepes))
+        elif lepes <100:
+            lepes =" {}".format(str(lepes))
+        else:
+            lepes="{}".format(str(lepes))
+        return lepes
     def Update(self,lepesek,turn):
-        width=len(self.level[0])
-        track= [[0 for x in range(width)]for y in range(len(self.level))]
         i=0
+        lepesek=self.Convert(lepesek)
         while i!=len(self.level):
             x=0
-            while x!= width:
-                track[i][x]=self.level[i][x]
+            while x!=len(self.level[i]):
+                if x<len(self.level[i])-2: #2.modszer
+                    sor = "{}{}{}".format(self.level[i][x],self.level[i][x+1],self.level[i][x+2])
+                    if sor ==lepesek:
+                        if turn==self.player1:
+                            self.level[i][x]=' '
+                            self.level[i][x+1]='X'
+                            self.level[i][x+2]=' '
+                        else:
+                            self.level[i][x]=' '
+                            self.level[i][x+1]='O'
+                            self.level[i][x+2]=' '
                 x+=1
             i+=1
+        return self.level
     def Render(self,turn,msg):
         os.system('cls')
+        y=0
+        while y != len(self.level):
+            x=0
+            sor=""
+            while x!=len(self.level[y]):
+                sor="{}{}".format(sor,self.level[y][x])
+                x+=1
+            print(sor)
+            y+=1
         print("{} köre jön!".format(turn))
         print("Adja meg a hely számát!")
-        for x in self.level:
-            print(x)
         print(msg)

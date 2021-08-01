@@ -8,25 +8,30 @@ class Levelgen:
             raise Exception("Hiba! A pálya mérete túl nagy!")
     def Generate(self):
         os.system('cls')
-        r=0
-        c=0
-        rl=[]
-        sup=0
-        self.level=[]
-        while r!=self.size:
-            sup+=self.size
-            while c!=sup:
-                if c<9:
-                    rl.append(" {} |".format(c+1))
-                elif c<99:
-                    rl.append(" {}|".format(c+1))
+        width=self.size*4+1
+        self.level=[['|' for x in range(width)]for y in range(self.size)]
+        y=0
+        c=1
+        while y!=self.size:
+            self.level[y][0]=='|'
+            x=1
+            while x!=width:
+                if c<=9:
+                    self.level[y][x]=' '
+                    self.level[y][x+1]=c
+                    self.level[y][x+2]=' '
+                    self.level[y][x+3]='|'
+                elif c<=99:
+                    self.level[y][x]=' '
+                    self.level[y][x+1]=str(c)[0]
+                    self.level[y][x+2]=str(c)[1]
+                    self.level[y][x+3]='|'
                 else:
-                    rl.append("{}|".format(c+1))
+                    self.level[y][x]=str(c)[0]
+                    self.level[y][x+1]=str(c)[1]
+                    self.level[y][x+2]=str(c)[2]
+                    self.level[y][x+3]='|'
                 c+=1
-            row="|"
-            for x in rl:
-                row="{}{}".format(row,x)
-            rl.clear()
-            self.level.append(row)
-            r+=1
+                x+=4
+            y+=1
         return self.level
