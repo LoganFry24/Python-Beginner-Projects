@@ -1,6 +1,7 @@
 #the game loop
 from control import Controls
 from screen import Screen
+from judge import Judge
 class Main:
     def __init__(self,mode,names,level,size):
         self.mode=mode
@@ -18,9 +19,11 @@ class Main:
         msg=""
         lepesek=[]
         turn =self.player1
+        end=False
         #constructors
         control=Controls(self.mode)
         graph=Screen(self.level,self.player1)
+        judge=Judge(self.level,self.size,self.player1,self.player2)
         #the game loop
         while loop==True:
             #Render
@@ -30,11 +33,17 @@ class Main:
             #Update the level
             graph.Update(lepesek[-1],turn)
             #Condition
-            if len(lepesek) == self.size**2:
-                msg ="Vége a játéknak! Nincs több hely"
+            end =judge.Check()
+            if end !=False:
+                msg = "Vége a játéknak! A győztes: {}".format(end)
                 graph.Render(turn,msg)
                 break
-            if msg=="":
+            elif len(lepesek) == self.size**2:
+                msg = "Vége a játéknak! Nincs több hely!"
+                graph.Render(turn,msg)
+                break
+            #switch the players
+            elif msg=="":
                 if turn == self.player1:
                     turn=self.player2
                 else:

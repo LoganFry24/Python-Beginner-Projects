@@ -18,7 +18,7 @@ class Screen:
         while i!=len(self.level):
             x=0
             while x!=len(self.level[i]):
-                if x<len(self.level[i])-2: #2.modszer
+                if x<len(self.level[i])-2:
                     sor = "{}{}{}".format(self.level[i][x],self.level[i][x+1],self.level[i][x+2])
                     if sor ==lepesek:
                         if turn==self.player1:
@@ -45,5 +45,6 @@ class Screen:
             print(sor)
             y+=1
         print("{} köre jön!".format(turn))
-        print("Adja meg a hely számát!")
+        if msg.startswith("Vége a játéknak!") == False:
+            print("Adja meg a hely számát!")
         print(msg)
