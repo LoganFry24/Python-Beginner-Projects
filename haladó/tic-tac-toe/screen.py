@@ -45,5 +45,6 @@ class Screen:
             print(sor)
             y+=1
         print("{} köre jön!".format(turn))
-        print("Adja meg a hely számát!")
+        if msg.startswith("Vége a játéknak!") == False:
+            print("Adja meg a hely számát!")
         print(msg)

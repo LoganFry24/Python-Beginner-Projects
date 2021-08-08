@@ -23,7 +23,7 @@ class Main:
         #constructors
         control=Controls(self.mode)
         graph=Screen(self.level,self.player1)
-        judge=Judge(self.level,self.size)
+        judge=Judge(self.level,self.size,self.player1,self.player2)
         #the game loop
         while loop==True:
             #Render
@@ -34,11 +34,16 @@ class Main:
             graph.Update(lepesek[-1],turn)
             #Condition
             end =judge.Check()
-            if len(lepesek) == self.size**2 and end == False:
-                msg ="Vége a játéknak! Nincs több hely"
+            if end !=False:
+                msg = "Vége a játéknak! A győztes: {}".format(end)
                 graph.Render(turn,msg)
                 break
-            if msg=="" and end == False:
+            elif len(lepesek) == self.size**2:
+                msg = "Vége a játéknak! Nincs több hely!"
+                graph.Render(turn,msg)
+                break
+            #switch the players
+            elif msg=="":
                 if turn == self.player1:
                     turn=self.player2
                 else:
