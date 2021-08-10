@@ -31,7 +31,6 @@ class Screen:
                             self.level[i][x+2]=' '
                 x+=1
             i+=1
-        return self.level
     def Render(self,turn,msg):
         sc=System()
         del sc

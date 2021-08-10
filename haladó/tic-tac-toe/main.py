@@ -8,9 +8,10 @@ class Main:
         self.size=size
         self.level=level
         self.player1=names[0]
+        self.difficulty=0
         if mode == "S":
             self.difficulty=names[1]
-            self.player2="computer"
+            self.player2="Computer"
         elif mode=="M":
             self.player2=names[1]
     def Game(self):
@@ -21,7 +22,7 @@ class Main:
         turn =self.player1
         end=False
         #constructors
-        control=Controls(self.mode)
+        control=Controls(self.mode,self.size,self.difficulty)
         graph=Screen(self.level,self.player1)
         judge=Judge(self.level,self.size,self.player1,self.player2)
         #the game loop
@@ -29,7 +30,7 @@ class Main:
             #Render
             graph.Render(turn,msg)
             # get the input from a player or a bot
-            msg=control.Input(turn,self.size,lepesek)
+            msg=control.Input(turn,lepesek)
             #Update the level
             graph.Update(lepesek[-1],turn)
             #Condition
@@ -48,5 +49,8 @@ class Main:
                     turn=self.player2
                 else:
                     turn=self.player1
+        del control
+        del graph
+        del judge
             
             

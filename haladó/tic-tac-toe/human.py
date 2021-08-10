@@ -2,7 +2,7 @@ class Human:
     def __init__(self,size,lepesek):
         self.size=size
         self.lepesek=lepesek
-    def GetInput(self,size,lepesek):
+    def GetInput(self):
         correct=False
         msg=""
         while correct != True:
@@ -12,11 +12,11 @@ class Human:
                 print("Egészszámot kell megadnod!")
             else:
                 volt=False
-                for x in lepesek:
+                for x in self.lepesek:
                     if x==lepes:
                         volt=True
-                if lepes <= size**2 and lepes >=1 and volt==False:
-                    lepesek.append(lepes)
+                if lepes <= self.size**2 and lepes >=1 and volt==False:
+                    self.lepesek.append(lepes)
                     correct=True
                     return msg
                 elif volt==True:

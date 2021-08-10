@@ -3,7 +3,7 @@
 from gamemode import Gamemode
 from levelgenerator import Levelgen
 from main import Main
-mode ="M"
+mode ="S"
 size=3
 #constructors
 players=Gamemode(mode) #gamemode
