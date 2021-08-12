@@ -3,17 +3,14 @@ from control import Controls
 from screen import Screen
 from judge import Judge
 class Main:
-    def __init__(self,mode,names,level,size):
+    def __init__(self,mode,player1,player2,difficulty,level,size,r):
         self.mode=mode
-        self.size=size
+        self.player1=player1
+        self.player2=player2
+        self.difficulty=difficulty
         self.level=level
-        self.player1=names[0]
-        self.difficulty=0
-        if mode == "S":
-            self.difficulty=names[1]
-            self.player2="Computer"
-        elif mode=="M":
-            self.player2=names[1]
+        self.size=size
+        self.round=r
     def Game(self):
         #variables
         loop=True
@@ -36,12 +33,14 @@ class Main:
             #Condition
             end =judge.Check()
             if end !=False:
-                msg = "Vége a játéknak! A győztes: {}".format(end)
+                msg = "Vége a {}.körnek! A győztes: {}".format(self.round,end)
                 graph.Render(turn,msg)
+                input("A tovább lépéshez nyomj entert!")
                 break
             elif len(lepesek) == self.size**2:
-                msg = "Vége a játéknak! Nincs több hely!"
+                msg = "Vége a körnek! Döntetlen!"
                 graph.Render(turn,msg)
+                input("A tovább lépéshez nyomj entert!")
                 break
             #switch the players
             elif msg=="":
@@ -52,5 +51,4 @@ class Main:
         del control
         del graph
         del judge
-            
-            
+        return end   
