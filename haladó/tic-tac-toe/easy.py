@@ -5,7 +5,6 @@ class Easy:
         self.size=size
         self.lepesek=lepesek
     def Step(self):
-        msg=""
         correct=False
         while correct==False:
             lepes=random.randint(1, self.size**2)
@@ -16,4 +15,3 @@ class Easy:
             if volt == False:
                 self.lepesek.append(lepes)
                 correct=True
-        return msg

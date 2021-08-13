@@ -9,19 +9,19 @@ class Bot:
         if self.difficulty==1:
             from easy import Easy
             con = Easy(self.size,self.lepesek)
-            msg= con.Step()
+            con.Step()
             del con
         # normal
         elif self.difficulty==2:
             from normal import Normal
             con = Normal(self.size,self.lepesek)
-            msg= con.Step()
+            con.Step()
             del con
         # hard
         elif self.difficulty==3:
             from hard import Hard
             con = Hard(self.size,self.lepesek)
-            msg= con.Step()
+            con.Step()
             del con
         # error
         else:

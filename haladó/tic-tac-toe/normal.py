@@ -4,5 +4,4 @@ class Normal:
         self.size=size
         self.lepesek=lepesek
     def Step(self):
-        msg=""
-        return msg
+        pass
