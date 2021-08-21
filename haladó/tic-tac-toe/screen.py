@@ -31,7 +31,6 @@ class Screen:
                             self.level[i][x+2]=' '
                 x+=1
             i+=1
-        return self.level
     def Render(self,turn,msg):
         sc=System()
         del sc
@@ -44,7 +43,7 @@ class Screen:
                 x+=1
             print(sor)
             y+=1
-        print("{} köre jön!".format(turn))
-        if msg.startswith("Vége a játéknak!") == False:
+        if msg.startswith("Vége") == False:
+            print("{} köre jön!".format(turn))
             print("Adja meg a hely számát!")
         print(msg)
