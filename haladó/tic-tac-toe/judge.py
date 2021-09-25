@@ -1,6 +1,5 @@
 #check the status of the game
-from screen import Screen
-class Judge(Screen):
+class Judge():
     def __init__(self, level,size,player1,player2):
         self.level=level
         self.size=size
